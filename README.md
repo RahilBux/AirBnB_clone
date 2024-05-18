@@ -1,1 +1,1 @@
-README for AirBnB_clone
+Creates a clone of the AirBnB website
