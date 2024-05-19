@@ -36,3 +36,20 @@ class FileStorage:
             obj_dict = {key: self.classes()[value["__class__"]](**value)
                         for key, value in obj_dict.items()}
             FileStorage.__objects = obj_dict
+
+    def classes(self):
+        """Returns a dict of classes that are valid"""
+        from models.base_model import BaseModel
+
+        classes = {"BaseModel": BaseModel}
+        return classes
+
+    def attributes(self):
+        """Returns the valid attributes for classnames"""
+        attributes = {
+                "BaseModel":
+                {"id": str,
+                    "created_at": datetime.datetime,
+                    "updated_at": datetime.datetime}
+                    }
+        return attributes
