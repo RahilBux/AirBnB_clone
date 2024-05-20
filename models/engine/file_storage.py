@@ -41,9 +41,19 @@ class FileStorage:
         """Returns a dict of classes that are valid"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.amenity import Amenity
+        from models.city import City
+        from models.review import Review
+        from models.place import Place
+        from models.state import State
 
         classes = {"BaseModel": BaseModel,
-                   "User": User}
+                   "User": User,
+                   "State": State,
+                   "City": City,
+                   "Place": Place,
+                   "Amenity": Amenity,
+                   "Review": Review}
         return classes
 
     def attributes(self):
@@ -57,6 +67,30 @@ class FileStorage:
                 {"email": str,
                     "password": str,
                     "first_name": str,
-                    "last_name": str}
+                    "last_name": str},
+                "State":
+                {"name": str},
+                "City":
+                {"state_id": str,
+                    "name": str},
+                "Place":
+                {"city_id": str,
+                    "user_id": str,
+                    "name": str,
+                    "description": str,
+                    "number_rooms": int,
+                    "number_bathrooms": int,
+                    "max_guest": int,
+                    "price_by_night": int,
+                    "latitude": float,
+                    "longitude": float,
+                    "amenity_ids": list},
+                "Amenity":
+                {"name": str},
+                "Review":
+                {"place_id": str,
+                    "user_d": str,
+                    "text": str}
+
                 }
         return attributes
